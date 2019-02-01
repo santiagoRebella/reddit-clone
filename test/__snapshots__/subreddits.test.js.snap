@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Subreddits is rendered correctly 1`] = `
+<section
+  className="subreddits"
+>
+  <div
+    className="card"
+    style={
+      Object {
+        "display": "inline-block",
+        "margin": 10,
+      }
+    }
+  >
+    <div
+      className="card-body"
+    >
+      <h5
+        className="card-title"
+      >
+        Test title
+      </h5>
+      <NavLink
+        className="btn btn-primary"
+        to="display_name"
+      >
+        display_name
+      </NavLink>
+    </div>
+  </div>
+  <div
+    className="card"
+    style={
+      Object {
+        "display": "inline-block",
+        "margin": 10,
+      }
+    }
+  >
+    <div
+      className="card-body"
+    >
+      <h5
+        className="card-title"
+      >
+        other Test title
+      </h5>
+      <NavLink
+        className="btn btn-primary"
+        to="display_name2"
+      >
+        display_name2
+      </NavLink>
+    </div>
+  </div>
+  <div
+    className="card"
+    style={
+      Object {
+        "display": "inline-block",
+        "margin": 10,
+      }
+    }
+  >
+    <div
+      className="card-body"
+    >
+      <h5
+        className="card-title"
+      >
+        A Test title
+      </h5>
+      <NavLink
+        className="btn btn-primary"
+        to="display_name3"
+      >
+        display_name3
+      </NavLink>
+    </div>
+  </div>
+</section>
+`;

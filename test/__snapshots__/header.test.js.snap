@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header is rendered correctly 1`] = `
+<header
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "height": 50,
+    }
+  }
+>
+  <img
+    src="assets/logo-wide.svg"
+    style={
+      Object {
+        "height": 40,
+        "marginRight": 5,
+      }
+    }
+  />
+  <nav
+    style={
+      Object {
+        "textAlign": "center",
+      }
+    }
+  >
+    <NavLink
+      style={
+        Object {
+          "fontWeight": 600,
+        }
+      }
+      to="/"
+    >
+      Subreddits
+    </NavLink>
+  </nav>
+</header>
+`;
+
+exports[`Header is rendered correctly 2`] = `
+<header
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+      "height": 50,
+    }
+  }
+>
+  <img
+    src="assets/logo-wide.svg"
+    style={
+      Object {
+        "height": 40,
+        "marginRight": 5,
+      }
+    }
+  />
+  <nav
+    style={
+      Object {
+        "textAlign": "center",
+      }
+    }
+  >
+    <NavLink
+      style={
+        Object {
+          "fontWeight": 300,
+        }
+      }
+      to="/"
+    >
+      Subreddits
+    </NavLink>
+    <NavLink
+      style={
+        Object {
+          "fontWeight": 600,
+        }
+      }
+      to="/something"
+    >
+       &gt; 
+      /something
+    </NavLink>
+  </nav>
+</header>
+`;

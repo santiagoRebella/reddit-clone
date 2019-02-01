@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Posts is rendered correctly 1`] = `
+<section
+  className="posts"
+>
+  <div
+    className="card"
+    style={
+      Object {
+        "display": "inline-block",
+        "margin": 10,
+        "width": 240,
+      }
+    }
+  >
+    <img
+      alt="Post image cap"
+      className="card-img-top"
+    />
+    <div
+      className="card-body"
+    >
+      <h6
+        className="card-title"
+      >
+        author: 
+        Test author
+      </h6>
+      <p
+        className="card-text"
+      >
+        created: 
+        Invalid date
+      </p>
+      <h5
+        className="card-title"
+      >
+        Test title
+      </h5>
+      <p
+        className="card-text"
+      >
+        Test Description
+      </p>
+      <a
+        className="btn btn-primary"
+        href="https://reddit.comundefined"
+      >
+        Comments
+      </a>
+    </div>
+  </div>
+  <div
+    className="card"
+    style={
+      Object {
+        "display": "inline-block",
+        "margin": 10,
+        "width": 240,
+      }
+    }
+  >
+    <img
+      alt="Post image cap"
+      className="card-img-top"
+    />
+    <div
+      className="card-body"
+    >
+      <h6
+        className="card-title"
+      >
+        author: 
+        other Test author
+      </h6>
+      <p
+        className="card-text"
+      >
+        created: 
+        Invalid date
+      </p>
+      <h5
+        className="card-title"
+      >
+        other Test title
+      </h5>
+      <p
+        className="card-text"
+      >
+        other Test Description
+      </p>
+      <a
+        className="btn btn-primary"
+        href="https://reddit.comundefined"
+      >
+        Comments
+      </a>
+    </div>
+  </div>
+  <div
+    className="card"
+    style={
+      Object {
+        "display": "inline-block",
+        "margin": 10,
+        "width": 240,
+      }
+    }
+  >
+    <img
+      alt="Post image cap"
+      className="card-img-top"
+    />
+    <div
+      className="card-body"
+    >
+      <h6
+        className="card-title"
+      >
+        author: 
+        A Test author
+      </h6>
+      <p
+        className="card-text"
+      >
+        created: 
+        Invalid date
+      </p>
+      <h5
+        className="card-title"
+      >
+        A Test title
+      </h5>
+      <p
+        className="card-text"
+      >
+        A Test Description
+      </p>
+      <a
+        className="btn btn-primary"
+        href="https://reddit.comundefined"
+      >
+        Comments
+      </a>
+    </div>
+  </div>
+</section>
+`;

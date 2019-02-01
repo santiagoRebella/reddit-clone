@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer is rendered correctly 1`] = `
+<footer
+  className="row"
+  style={
+    Object {
+      "bottom": 10,
+      "position": "fixed",
+      "right": 10,
+    }
+  }
+>
+  <div
+    className="col-sm-12 float-right text-sm-right"
+  >
+    <button
+      className="btn btn-link"
+      onClick={[Function]}
+      type="button"
+    >
+      go up
+    </button>
+  </div>
+</footer>
+`;

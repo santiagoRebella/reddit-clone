@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Subreddit is rendered correctly 1`] = `
+<div
+  className="card"
+  style={
+    Object {
+      "display": "inline-block",
+      "margin": 10,
+    }
+  }
+>
+  <div
+    className="card-body"
+  >
+    <h5
+      className="card-title"
+    >
+      Test title
+    </h5>
+    <NavLink
+      className="btn btn-primary"
+    />
+  </div>
+</div>
+`;

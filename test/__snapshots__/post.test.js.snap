@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post is rendered correctly 1`] = `
+<div
+  className="card"
+  style={
+    Object {
+      "display": "inline-block",
+      "margin": 10,
+      "width": 240,
+    }
+  }
+>
+  <img
+    alt="Post image cap"
+    className="card-img-top"
+    src="Test image"
+  />
+  <div
+    className="card-body"
+  >
+    <h6
+      className="card-title"
+    >
+      author: 
+      Test author
+    </h6>
+    <p
+      className="card-text"
+    >
+      created: 
+      January 15th 1970, 6:56:07 am
+    </p>
+    <h5
+      className="card-title"
+    >
+      Test title
+    </h5>
+    <p
+      className="card-text"
+    >
+      Test Description
+    </p>
+    <a
+      className="btn btn-primary"
+      href="https://reddit.comTest Url"
+    >
+      Comments
+    </a>
+  </div>
+</div>
+`;
