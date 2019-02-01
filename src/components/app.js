@@ -24,10 +24,12 @@ class App extends React.Component {
       this.props.fetchSubreddits();
     }
     window.addEventListener('scroll', this.handleScroll);
+    this.refresh = setInterval(() => window.location.reload(true), 60000);
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
+    clearInterval(this.refresh);
   }
 
   fetchScroll() {

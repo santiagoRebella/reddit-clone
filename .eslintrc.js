@@ -90,6 +90,8 @@ module.exports = {
     "globals": {
         'require': false,
         'process': false,
-        '__dirname': false
+        '__dirname': false,
+        'expect': false,
+        'jest': false
     }
 };
