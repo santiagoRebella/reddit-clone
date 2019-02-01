@@ -2,7 +2,8 @@ const React = require('react');
 const PropTypes = require('prop-types');
 const { NavLink } = require('react-router-dom');
 
-class Subredit extends React.Component {
+class Subreddit extends React.Component {
+
   render() {
 
     return (
@@ -20,9 +21,9 @@ class Subredit extends React.Component {
   }
 }
 
-Subredit.propTypes = {
+Subreddit.propTypes = {
   display_name: PropTypes.string,
   title: PropTypes.string
 };
 
-module.exports = Subredit;
+module.exports = Subreddit;

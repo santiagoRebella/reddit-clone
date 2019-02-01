@@ -5,13 +5,14 @@ const Post = require('components/post');
 class Posts extends React.Component {
   componentDidMount() {
     this.props.fetchPosts(this.props.subreddit);
+    this.props.onViewChange(this.props.subreddit);
   }
 
   postsList(list) {
     return list.map((item) => {
       return (
         <Post
-            key={item.data.title+item.data.permalink}
+            key={item.data.id}
             title={item.data.title}
             description={item.data.description}
             url={item.data.permalink}
@@ -33,8 +34,9 @@ class Posts extends React.Component {
 
 Posts.propTypes = {
   fetchPosts: PropTypes.func.isRequired,
-  list: PropTypes.array.isRequired,
-  subreddit: PropTypes.string.isRequired
+  list: PropTypes.object.isRequired, // immutable list
+  subreddit: PropTypes.string.isRequired,
+  onViewChange: PropTypes.func.isRequired
 };
 
 module.exports = Posts;

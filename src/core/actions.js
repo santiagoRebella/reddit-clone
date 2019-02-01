@@ -22,12 +22,14 @@ const fetchRequest = () => {
   };
 };
 
-const fetchSubreddits = () => (dispatch, getState) => {
+const fetchSubreddits = (after) => (dispatch, getState) => {
   dispatch(fetchRequest());
 
   return get('subreddits/default/.json', {
       header: {},
       query: {
+        after,
+        limit: 25,
         show: 'all',
         sr_detail: true
       }
@@ -57,19 +59,30 @@ const fetchPostsRequest = () => {
 };
 
 
-const fetchPosts = (subreddit) => (dispatch, getState) => {
+const fetchPosts = (subreddit, after) => (dispatch, getState) => {
 
   dispatch(fetchPostsRequest());
 
   return get(`r/${subreddit}/.json`, {
       header: {},
-      query: {}
+      query: {
+        after,
+        limit: 25
+      }
     })
     .then((res) => dispatch(fetchPostsSucceed(res)),
           (err) => dispatch(fetchPostsFailed(err)));
 };
 
+const onViewChange = (view) => {
+  return {
+    type: actionTypes.VIEW_CHANGE,
+    payload: view
+  };
+};
+
 module.exports = {
   fetchSubreddits,
-  fetchPosts
+  fetchPosts,
+  onViewChange
 };

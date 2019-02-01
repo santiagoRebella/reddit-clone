@@ -60,6 +60,7 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: path.resolve(__dirname, 'src/assets/favicons'), to: '' },
       { from: path.resolve(__dirname, 'src/assets/logo-wide.svg'), to: 'assets' },
+      { from: path.resolve(__dirname, 'src/assets/loading.gif'), to: 'assets' },
       { from: path.resolve(__dirname, 'src/index.html'), to: 'index.html' }
     ], { ignore: []})
   ],

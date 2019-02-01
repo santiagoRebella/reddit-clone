@@ -3,8 +3,9 @@ const PropTypes = require('prop-types');
 const { connect } = require('react-redux');
 const { BrowserRouter } = require('react-router-dom');
 const { Route, Switch, Redirect } = require('react-router-dom');
+const { debounce } = require('lodash');
 
-const { fetchSubreddits, fetchPosts } = require('core/actions');
+const { fetchSubreddits, fetchPosts, onViewChange } = require('core/actions');
 
 const Filters = require('components/filters');
 const Header = require('components/header');
@@ -13,19 +14,55 @@ const Posts = require('components/posts');
 const Footer = require('components/footer');
 
 class App extends React.Component {
-  componentDidMount() {
-    this.props.fetchSubreddits();
+  constructor(props) {
+    super(props);
+    this.handleScroll = this.handleScroll.bind(this);
+    this.fetchScroll = debounce(this.fetchScroll.bind(this), 400);
   }
+  componentDidMount() {
+    if(!this.props.store.get('subreddits').size) {
+      this.props.fetchSubreddits();
+    }
+    window.addEventListener('scroll', this.handleScroll);
+    //setInterval(() => window.location.reload(true), 60000);
+  }
+
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  fetchScroll() {
+    const after = this.props.store.get('after');
+    const view = this.props.store.get('view');
+
+    if(view === '/' && after) {
+      this.props.fetchSubreddits(after);
+    } else if (after) {
+      this.props.fetchPosts(view, after)
+    } else {
+      console.warn('no after to fetch');
+    }
+  }
+
+  handleScroll() {
+    if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+
+      this.fetchScroll();
+    }
+  }
+
   render() {
     const { store } = this.props;
+    const isLoading = store.get('fetching');
 
     return (
-      <BrowserRouter>
+      <BrowserRouter onScroll={this.handleScroll}>
         <div className="reddit-lite">
           <div className="container-fluid">
             <div className="row">
               <div className="col-sm-12">
-                <Header />
+                <Header view={store.get('view')}/>
               </div>
             </div>
             <div className="row">
@@ -41,6 +78,7 @@ class App extends React.Component {
                         <SubReddits
                             fetchSubreddits={this.props.fetchSubreddits}
                             list={store.get('subreddits')}
+                            onViewChange={this.props.onViewChange}
                         />
                       )}
                   />
@@ -50,6 +88,7 @@ class App extends React.Component {
                             fetchPosts={this.props.fetchPosts}
                             subreddit={props.match.params.subreddit}
                             list={store.get('posts')}
+                            onViewChange={this.props.onViewChange}
                         />
                       )}
                   />
@@ -62,8 +101,18 @@ class App extends React.Component {
               <div className="col-sm-12">
                 <Footer />
               </div>
+              <div className="col-sm-12">
+                {isLoading && <img src="assets/loading.gif" style={{
+                  display: 'block',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                  width: 50
+                }} />}
+              </div>
             </div>
+
           </div>
+
         </div>
       </BrowserRouter>
     );
@@ -73,7 +122,8 @@ class App extends React.Component {
 App.propTypes = {
   store: PropTypes.object.isRequired,
   fetchSubreddits: PropTypes.func.isRequired,
-  fetchPosts: PropTypes.func.isRequired
+  fetchPosts: PropTypes.func.isRequired,
+  onViewChange: PropTypes.func.isRequired
 };
 
 module.exports = connect(
@@ -81,8 +131,9 @@ module.exports = connect(
     return { store: state }
   },
   {
-    fetchSubreddits,
-    fetchPosts
+    fetchSubreddits: fetchSubreddits,
+    fetchPosts: fetchPosts,
+    onViewChange
   }
 )(App);
 
