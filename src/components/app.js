@@ -17,29 +17,28 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.handleScroll = this.handleScroll.bind(this);
-    this.fetchScroll = debounce(this.fetchScroll.bind(this), 400);
+    this.fetchScroll = debounce(this.fetchScroll.bind(this), 1000);
   }
   componentDidMount() {
     if(!this.props.store.get('subreddits').size) {
       this.props.fetchSubreddits();
     }
     window.addEventListener('scroll', this.handleScroll);
-    //setInterval(() => window.location.reload(true), 60000);
   }
-
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
   fetchScroll() {
-    const after = this.props.store.get('after');
-    const view = this.props.store.get('view');
+    const { store, fetchSubreddits, fetchPosts} = this.props;
+    const after = store.get('after');
+    const view = store.get('view');
 
     if(view === '/' && after) {
-      this.props.fetchSubreddits(after);
+      fetchSubreddits({after});
     } else if (after) {
-      this.props.fetchPosts(view, after)
+      fetchPosts(view, {after})
     } else {
       console.warn('no after to fetch');
     }
@@ -47,7 +46,6 @@ class App extends React.Component {
 
   handleScroll() {
     if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
-
       this.fetchScroll();
     }
   }

@@ -22,17 +22,18 @@ const fetchRequest = () => {
   };
 };
 
-const fetchSubreddits = (after) => (dispatch, getState) => {
+const fetchSubreddits = (opts = {}) => (dispatch, getState) => {
+
+  const query = {
+    limit: 25
+  };
+  if (opts.after) { query.after = opts.after; }
+  if (opts.before) { query.before = opts.before; }
   dispatch(fetchRequest());
 
   return get('subreddits/default/.json', {
       header: {},
-      query: {
-        after,
-        limit: 25,
-        show: 'all',
-        sr_detail: true
-      }
+      query
     })
     .then((res) => dispatch(fetchSucceed(res)),
           (err) => dispatch(fetchFailed(err)));
@@ -45,33 +46,20 @@ const fetchPostsSucceed = (data) => {
   };
 };
 
-const fetchPostsFailed = (err) => {
-  return {
-    type: actionTypes.FETCH_POSTS_FAILED,
-    payload: err.response
-  };
-};
+const fetchPosts = (subreddit, opts = {}) => (dispatch, getState) => {
 
-const fetchPostsRequest = () => {
-  return {
-    type: actionTypes.FETCH_POSTS_REQUEST,
-  };
-};
+  const query = { limit: 25 };
+  if (opts.after) { query.after = opts.after; }
+  if (opts.before) { query.before = opts.before; }
 
-
-const fetchPosts = (subreddit, after) => (dispatch, getState) => {
-
-  dispatch(fetchPostsRequest());
+  dispatch(fetchRequest());
 
   return get(`r/${subreddit}/.json`, {
       header: {},
-      query: {
-        after,
-        limit: 25
-      }
+      query
     })
     .then((res) => dispatch(fetchPostsSucceed(res)),
-          (err) => dispatch(fetchPostsFailed(err)));
+          (err) => dispatch(fetchFailed(err)));
 };
 
 const onViewChange = (view) => {
