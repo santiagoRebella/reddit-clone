@@ -60,7 +60,7 @@
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
-    "bootstrap": "^4.2.1",
+    "bootstrap": "4.2.1",
     "express": "^4.16.4",
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.11",
